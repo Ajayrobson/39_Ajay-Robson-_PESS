@@ -10,7 +10,7 @@
 <script>
 function ajay()
 {
-	var x=document.forms ["frmLogCall"]["callerName"].value;
+	var x=document.forms ["frmLogCall"]["callername"].value;
 	if (x==null || x=="")
 	{
 		alert("Caller Name is required.");
@@ -31,7 +31,7 @@ if ($mysqli->connect_errno)
 	die ("Unable to connect to Database: ".$mysqli->connect_errno);
 }
 
-$sql = "SELECT * FROM incident_type";
+$sql = "SELECT * FROM incidenttype";
 	
 if (!($stmt = $mysqli->prepare($sql)))
 {
@@ -52,7 +52,7 @@ if(!($resultset = $stmt->get_result()))
 	
 while ($row = $resultset->fetch_assoc())
 {
-	$incidentType[$row['incident_type_id']] = $row['incident_type_desc'];
+	$incidentType[$row['incidenttypeid']] = $row['incidenttypedesc'];
 }
 	
 $stmt->close();
@@ -87,7 +87,7 @@ onSubmit="return ajay ();" >
 	
 	<tr>
 	<td width="50%">Incident Type :</td>
-		<td width="50%"><select name="incident_type" id="incident_type">
+		<td width="50%"><select name="incidentType" id="incidentType">
 	<?php 
 			foreach( $incidentType as $key => $value){
 	?>
@@ -104,7 +104,7 @@ onSubmit="return ajay ();" >
 	
 	<tr>
 	<td width="50%">Description :</td>
-		<td width="50%"><textarea name="incident_desc" id="incident_desc" cols="45" rows="5"></textarea></td>
+		<td width="50%"><textarea name="incidentdesc" id="incidentdesc" cols="45" rows="5"></textarea></td>
 	</tr>
 	
 	<tr>
@@ -114,9 +114,5 @@ onSubmit="return ajay ();" >
 </table>
 </form>
 </fieldset>	
-
-	
-
-
 </body>
 </html>
